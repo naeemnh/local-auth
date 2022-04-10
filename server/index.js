@@ -62,6 +62,7 @@ app.post('/register', (req, res) => {
       res.send("User Created");
     }
 })
+})
 app.get('/user', (req, res) => {
     res.send(req.user);
 })
@@ -71,4 +72,4 @@ app.post('/logout', (req, res) => {
 })
 
 //Start Server
-app.listen(4000, () => console.log('server started'));
+app.listen(4000, () => console.log('server started'))
