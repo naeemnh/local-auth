@@ -7,11 +7,12 @@ passportLocal = require('passport-local').Strategy,
 cookieParser = require('cookie-parser'),
 bcrypt = require('bcryptjs'),
 session = require('express-session'),
-bodyParser = require('body-parser');
+bodyParser = require('body-parser'),
+User = require('./user');
 
 mongoose.connect('mongodb://localhost:27017/user_db', {
     useNewUrlParser: true,
-    userUnifiedTopology: true,
+    useUnifiedTopology: true,
 })
 
 // Middleware
@@ -45,7 +46,7 @@ app.post('/login', (req, res) => {
         console.log(req.user);
       });
     }
-  })(req, res, next);
+  })(req, res);
 })
 app.post('/register', (req, res) => {
     User.findOne({ username: req.body.username }, async (err, doc) => {
